@@ -222,8 +222,6 @@
 
     <!-- Main Container -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
-        <div id="react-root"></div>
-        
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
         
             <!-- Left Column (Sticky Sidebar): Profile, Score, KPIs -->
@@ -988,35 +986,7 @@
 
     </script>
 
-    <!-- React Component -->
-    <script type="text/babel">
-      const { useState } = React;
+        <!-- React placeholder removed -->
 
-      function ProfileSection({ heading, summary }) {
-        return (
-          <section id="profile-section" className="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg border-l-4 border-primary-light dark:border-primary-dark">
-              <div className="flex items-center gap-3 mb-4">
-                  <i className="fa-solid fa-user-circle text-3xl text-primary-light dark:text-primary-dark"></i>
-                  <h2 className="text-2xl font-bold">{heading}</h2>
-              </div>
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300">{summary}</p>
-          </section>
-        );
-      }
-
-      function App() {
-        // Placeholder data for now, will be dynamic later
-        const heading = "Professional Profile";
-        const summary = "This section is now rendered by React. The next step will be to feed the correct language data into it dynamically.";
-        
-        return (
-            <ProfileSection heading={heading} summary={summary} />
-        );
-      }
-
-      const container = document.getElementById('react-root');
-      const root = ReactDOM.createRoot(container);
-      root.render(<App />);
-    </script>
 </body>
 </html>
