@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Abd El-Shafi Ali | Smart Resume</title>
-    <link rel="icon" href="/assets/favicon-light-DRw-woZ_.ico" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="/assets/favicon-dark-SpVS4Auo.ico" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
     
     <!-- Libraries: Tailwind, Chart.js, and FontAwesome for premium icons -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <!-- Markdown Parser for AI responses -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <!-- Tailwind Config for Custom Colors -->
     <script>
@@ -181,7 +186,6 @@
             40% { transform: scale(1); }
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-B5O44e8T.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300">
 
@@ -232,7 +236,7 @@
                         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
                         
                         <div class="mb-4 inline-block p-1 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400">
-                             <img src="/assets/profile-DmCfdbWR.jpg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white dark:border-cardDark bg-white">
+                             <img src="assets/profile.jpg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white dark:border-cardDark bg-white">
                         </div>
 
                         <h1 class="text-2xl font-extrabold mb-1" id="nameTitle"></h1>
@@ -436,8 +440,6 @@
         </button>
     </div>
 
-    <!-- Main script entry point for Vite -->
-
     <footer class="bg-white dark:bg-cardDark border-t border-gray-200 dark:border-gray-800 mt-10">
         <div class="container mx-auto px-4 py-8 text-center text-gray-500 dark:text-gray-400">
             <p id="footerText"></p>
@@ -447,16 +449,7 @@
     <!-- LOGIC -->
     <script>
         // --- 0. AI CONFIGURATION ---
-        // 🛑 تنبيه أمني هام جداً!
-        // لا تضع مفتاح الواجهة البرمجية (API Key) هنا مباشرة وترفع الملف إلى مستودع عام على GitHub.
-        // هذا سيكشف مفتاحك للعالم، مما يسمح لأي شخص باستخدامه على حسابك.
-        // الطريقة الأكثر أمانًا هي استخدام خادم وسيط (server-side proxy) لإخفاء المفتاح.
-        // إذا كنت لا تزال في مرحلة التطوير، يمكنك تعيين المفتاح هنا مؤقتًا،
-        // ولكن تأكد من عدم رفعه (commit) إلى GitHub.
-        const apiKey = "YOUR_GEMINI_API_KEY"; // ⬅️ استبدل هذا بمفتاحك **للتجربة المحلية فقط**
-        if (apiKey === "YOUR_GEMINI_API_KEY") {
-            console.warn("Chat feature is disabled. Please provide a valid Gemini API key for local testing. Do not commit your key to a public repository.");
-        }
+        const apiKey = ""; // Leave empty, system will handle authentication
 
         // --- 1. CONFIGURATION & DATA ---
         const contentData = {
@@ -624,12 +617,64 @@
             }
         };
 
-        // --- 2. STATE MANAGEMENT ) { ... }
+        // --- 2. STATE MANAGEMENT ---
+        let currentLang = 'ar'; // Default, will be overwritten by auto-detect
+        let chartInstance = null;
+
+        // --- 3. AUTO-DETECTION LOGIC ---
+        function detectSettings() {
+            // A. Language Detection
+            const userLang = navigator.language || navigator.userLanguage; 
+            if (userLang.startsWith('ar')) {
+                currentLang = 'ar';
+            } else {
+                currentLang = 'en';
+            }
+
+            // B. Theme Detection
+            // Check if user has saved preference, otherwise use system
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            updateIcon();
+            updateUI();
+        }
 
         // --- 4. RENDER FUNCTIONS ---
         function renderUI() {
             const data = contentData[currentLang];
-            cooument.getElementById('certsTitle').innerText = data.certsTitle;
+            const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = dir;
+
+            // Simple Text Replacements
+            document.getElementById('pageTitle').innerText = data.title;
+            document.getElementById('navTitle').innerText = data.navTitle;
+            document.getElementById('langToggleText').innerText = currentLang === 'ar' ? 'EN' : 'عربي';
+            document.getElementById('nameTitle').innerText = data.nameTitle;
+            document.getElementById('jobTitle').innerText = data.jobTitle;
+            document.getElementById('locationText').innerText = data.location;
+            document.getElementById('phoneText').innerText = data.phoneText;
+            document.getElementById('readinessScoreTitle').innerText = data.readinessTitle;
+            
+            document.getElementById('profileHeading').innerText = data.profileHeading;
+            document.getElementById('profileSummary').innerText = data.profileSummary;
+            
+            document.getElementById('techPortfolioTitle').innerText = data.techTitle;
+            document.getElementById('freelanceTitleText').innerText = data.freelanceTitle;
+            document.getElementById('freelanceDuration').innerText = data.freelanceDur;
+            
+            document.getElementById('skillsTitle').innerText = data.skillsTitle;
+            document.getElementById('workExperienceHeading').innerText = data.expTitle;
+            document.getElementById('educationHeading').innerText = data.eduTitle;
+            document.getElementById('certsTitle').innerText = data.certsTitle;
             document.getElementById('footerText').innerText = data.footer;
 
             // Chat UI Localization
@@ -878,7 +923,7 @@
         // Send Message Handler
         async function handleSend() {
             const text = chatInput.value.trim();
-            if (!text || apiKey === "YOUR_GEMINI_API_KEY") return;
+            if (!text) return;
 
             addMessage(text, 'user');
             chatInput.value = '';
@@ -939,10 +984,39 @@
 
 
         // Initialize
-        // React now handles initialization via useEffect in App.jsx
-        // detectSettings();
+        detectSettings();
+
     </script>
 
+    <!-- React Component -->
+    <script type="text/babel">
+      const { useState } = React;
 
+      function ProfileSection({ heading, summary }) {
+        return (
+          <section id="profile-section" className="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg border-l-4 border-primary-light dark:border-primary-dark">
+              <div className="flex items-center gap-3 mb-4">
+                  <i className="fa-solid fa-user-circle text-3xl text-primary-light dark:text-primary-dark"></i>
+                  <h2 className="text-2xl font-bold">{heading}</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300">{summary}</p>
+          </section>
+        );
+      }
+
+      function App() {
+        // Placeholder data for now, will be dynamic later
+        const heading = "Professional Profile";
+        const summary = "This section is now rendered by React. The next step will be to feed the correct language data into it dynamically.";
+        
+        return (
+            <ProfileSection heading={heading} summary={summary} />
+        );
+      }
+
+      const container = document.getElementById('react-root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
 </body>
 </html>
