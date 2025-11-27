@@ -169,7 +169,6 @@
         }
         .modal-content {
             background: white;
-            dark:bg-cardDark;
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             max-width: 600px;
@@ -183,13 +182,18 @@
         .modal-overlay.open .modal-content {
             transform: scale(1);
         }
+        .dark .modal-content {
+            background-color: #1e293b;
+        }
         .modal-header {
             padding: 1rem 1.5rem;
             border-bottom: 1px solid #e5e7eb;
-            dark:border-gray-700;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        .dark .modal-header {
+            border-color: #334155;
         }
         .modal-body {
             flex: 1;
@@ -199,8 +203,10 @@
         .modal-footer {
             padding: 1rem 1.5rem;
             border-top: 1px solid #e5e7eb;
-            dark:border-gray-700;
             text-align: right;
+        }
+        .dark .modal-footer {
+            border-color: #334155;
         }
         .modal-close {
             background: none;
