@@ -77,6 +77,38 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
+        /* Portfolio Styles */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .portfolio-item img {
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300">
@@ -252,6 +284,19 @@
                     </div>
                 </section>
 
+                <!-- Portfolio Section -->
+                <section id="portfolio">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="p-3 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                            <i class="fa-solid fa-award text-2xl"></i>
+                        </span>
+                        <h2 class="text-3xl font-bold" id="portfolioTitle"></h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioContent">
+                        <!-- JS will populate this -->
+                    </div>
+                </section>
+
                 <!-- Certifications -->
                 <section id="certs">
                     <div class="flex items-center gap-3 mb-6">
@@ -290,7 +335,7 @@
                 navTitle: 'عبد الشافي علي',
                 nameTitle: 'عبد الشافي علي',
                 jobTitle: 'طالب جامعي ومطور برمجيات',
-                nav: { profile: 'النبذة', tech: 'الخبرة التقنية', skills: 'المهارات', exp: 'الخبرة العملية', certs: 'الشهادات' },
+                nav: { profile: 'النبذة', tech: 'الخبرة التقنية', skills: 'المهارات', exp: 'الخبرة العملية', portfolio: 'الشهادات', certs: 'شهادات أخرى' },
                 location: 'الإسماعيلية - مركز فايد - فنارة',
                 phoneText: '+20 109 599 7846',
                 profileHeading: 'نبذة احترافية',
@@ -339,6 +384,20 @@
                 edu: [
                     { d: '2022 - 2026 (متوقع)', t: 'بكالوريوس تجارة', c: 'جامعة قناة السويس', desc: 'التخصص: أسواق ومؤسسات مالية. التقدير: جيد جداً. المهارات المكتسبة: التحليل المالي، التطبيقات الإلكترونية في البنوك، إدارة المخاطر، العمل الجماعي.' }
                 ],
+                portfolioTitle: 'الشهادات',
+                portfolio: [
+                    { img: 'assets/Computerized Accounting.jpeg', title: 'محاسبة حاسوبية (Peach Tree)' },
+                    { img: 'assets/Emerging Talent for the Future Workplace.jpeg', title: 'برنامج تدريب المواهب الناشئة (CIB)' },
+                    { img: 'assets/Egyptian Banking System Model (EBSM).jpeg', title: 'نموذج النظام المصرفي المصري (EBSM)' },
+                    { img: 'assets/بنك مصر.jpeg', title: 'تدريب صيفي في بنك مصر (2024)' },
+                    { img: 'assets/Digital Transformation and Data Literacy.jpeg', title: 'التحول الرقمي ومحو أمية البيانات (SAS CIB)' },
+                    { img: 'assets/بنك الCIP FINANCAIL LITERACY.jpeg', title: 'شهادة LinkedIn Learning (برنامج CIB)' },
+                    { img: 'assets/BASICS OF PRICING.jpeg', title: 'دورة أساسيات التسعير' },
+                    { img: 'assets/Advanced Excel.jpeg', title: 'شهادة Excel متقدم' },
+                    { img: 'assets/Koch Industries\'s Accounting.png', title: 'محاكاة محاسبة في Koch Industries (Forage)' },
+                    { img: 'assets/completed JPMorgan.png', title: 'محاكاة الخدمات المصرفية الاستثمارية في JPMorgan (Forage)' },
+                    { img: 'assets/Investments\'s Customer Service.png', title: 'محاكاة خدمة العملاء في Fidelity Investments (Forage)' }
+                ],
                 certsTitle: 'الشهادات والمحاكاة الوظيفية',
                 certs: {
                     sim: { t: 'محاكاة وظيفية (Forage)', i: ['JPMorgan Chase (الخدمات المصرفية الاستثمارية)', 'Fidelity Investments (محامي علاقات العملاء)', 'Koch Industries (المحاسبة)'] },
@@ -364,7 +423,7 @@
                 navTitle: 'Abd El-Shafi Ali',
                 nameTitle: 'Abd El-Shafi Ali',
                 jobTitle: 'University Student & Software Developer',
-                nav: { profile: 'Profile', tech: 'Tech', skills: 'Skills', exp: 'Experience', certs: 'Certs' },
+                nav: { profile: 'Profile', tech: 'Tech', skills: 'Skills', exp: 'Experience', portfolio: 'Certificates', certs: 'Other Certs' },
                 location: 'Ismailia, Egypt',
                 phoneText: '+20 109 599 7846',
                 profileHeading: 'Professional Profile',
@@ -412,6 +471,20 @@
                 ],
                 edu: [
                     { d: '2022 – 2026 (Expected)', t: 'Bachelor of Commerce, Major: Financial Markets & Institutions', c: 'Suez Canal University', desc: 'Grade: Very Good. Key Skills Acquired: Financial Analysis, Electronic Applications in Banking and Financial Institutions, Risk Management, Teamwork.' }
+                ],
+                portfolioTitle: 'Certificates',
+                portfolio: [
+                    { img: 'assets/Computerized Accounting.jpeg', title: 'Computerized Accounting (Peach Tree)' },
+                    { img: 'assets/Emerging Talent for the Future Workplace.jpeg', title: 'Emerging Talent Program (CIB)' },
+                    { img: 'assets/Egyptian Banking System Model (EBSM).jpeg', title: 'Egyptian Banking System Model (EBSM)' },
+                    { img: 'assets/بنك مصر.jpeg', title: 'Summer Internship at Banque Misr (2024)' },
+                    { img: 'assets/Digital Transformation and Data Literacy.jpeg', title: 'Digital Transformation & Data Literacy (SAS CIB)' },
+                    { img: 'assets/بنك الCIP FINANCAIL LITERACY.jpeg', title: 'LinkedIn Learning Certificate (CIB Program)' },
+                    { img: 'assets/BASICS OF PRICING.jpeg', title: 'Pricing Fundamentals Course' },
+                    { img: 'assets/Advanced Excel.jpeg', title: 'Advanced Excel Certificate' },
+                    { img: 'assets/Koch Industries\'s Accounting.png', title: 'Koch Industries Accounting Simulation (Forage)' },
+                    { img: 'assets/completed JPMorgan.png', title: 'JPMorgan Investment Banking Simulation (Forage)' },
+                    { img: 'assets/Investments\'s Customer Service.png', title: 'Fidelity Investments Customer Service Simulation (Forage)' }
                 ],
                 certsTitle: 'Certifications & Job Simulations',
                 certs: {
@@ -492,6 +565,7 @@
             document.getElementById('skillsTitle').innerText = data.skillsTitle;
             document.getElementById('workExperienceHeading').innerText = data.expTitle;
             document.getElementById('educationHeading').innerText = data.eduTitle;
+            document.getElementById('portfolioTitle').innerText = data.portfolioTitle;
             document.getElementById('certsTitle').innerText = data.certsTitle;
             document.getElementById('footerText').innerText = data.footer;
 
@@ -501,6 +575,8 @@
                 <a href="#profile-section" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.profile}</a>
                 <a href="#tech-portfolio" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.tech}</a>
                 <a href="#skills" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.skills}</a>
+                <a href="#portfolio" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.portfolio}</a>
+                <a href="#certs" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.certs}</a>
             `;
 
             // KPIs
@@ -587,6 +663,16 @@
                     <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">${e.c}</p>
                     <p class="text-sm text-gray-600 dark:text-gray-300">${e.desc}</p>
                 </div>
+            `).join('');
+
+            // Portfolio
+            document.getElementById('portfolioContent').innerHTML = data.portfolio.map(p => `
+                <a href="${p.img}" target="_blank" class="portfolio-item block group">
+                    <img src="${p.img}" alt="${p.title}" class="w-full h-48 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="font-bold text-lg">${p.title}</h3>
+                    </div>
+                </a>
             `).join('');
 
             // Certs
