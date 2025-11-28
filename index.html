@@ -7,12 +7,11 @@
     <link rel="icon" href="assets/favicon-light-DRw-woZ_.ico" media="(prefers-color-scheme: light)">
     <link rel="icon" href="assets/favicon-dark-SpVS4Auo.ico" media="(prefers-color-scheme: dark)">
     
-    <!-- Libraries: Tailwind, Chart.js, and FontAwesome for premium icons -->
+    <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <!-- Markdown Parser for AI responses -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <!-- React -->
@@ -20,11 +19,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <!-- 3D & Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-
-    <!-- Tailwind Config for Custom Colors -->
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -32,11 +27,11 @@
                 extend: {
                     colors: {
                         primary: {
-                            light: '#2563eb', // Blue 600
-                            dark: '#60a5fa',  // Blue 400 (Neon-ish)
+                            light: '#2563eb', 
+                            dark: '#60a5fa',
                         },
-                        darkbg: '#0f172a', // Slate 900
-                        cardDark: '#1e293b', // Slate 800
+                        darkbg: '#0f172a', 
+                        cardDark: '#1e293b',
                     },
                     fontFamily: {
                         sans: ['Tajawal', 'sans-serif'],
@@ -47,7 +42,7 @@
     </script>
 
     <style>
-        /* Custom Animations */
+        /* General Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -55,33 +50,27 @@
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .animation-delay-200 {
-            animation-delay: 0.2s;
-        }
+        .animation-delay-200 { animation-delay: 0.2s; }
         
-        /* Progress Bar Animation */
         .progress-bar {
             width: 0;
             transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Glassmorphism for Sticky Elements */
         .glass-panel {
             -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
         }
 
-        /* Hover Glow Effects for Icons */
         .icon-btn:hover {
             box-shadow: 0 0 15px currentColor;
         }
 
-        /* Dark Mode Transitions */
         body, div, p, h1, h2, h3, section {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Portfolio Styles */
+        /* Portfolio */
         .portfolio-item {
             position: relative;
             overflow: hidden;
@@ -93,12 +82,8 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .portfolio-item img {
-            transition: transform 0.3s ease;
-        }
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
+        .portfolio-item img { transition: transform 0.3s ease; }
+        .portfolio-item:hover img { transform: scale(1.05); }
         .portfolio-overlay {
             position: absolute;
             bottom: 0;
@@ -110,74 +95,106 @@
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
+        .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
 
-        /* Modal Styles */
+        /* Modal */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.8);
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
         .modal-content {
-            background: white;
-            dark:bg-cardDark;
+            background: white; dark:bg-cardDark;
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
+            max-width: 800px; width: 90%; max-height: 90vh;
+            display: flex; flex-direction: column;
+            transform: scale(0.95); transition: transform 0.3s ease;
         }
-        .modal-overlay.open .modal-content {
-            transform: scale(1);
-        }
+        .modal-overlay.open .modal-content { transform: scale(1); }
         .modal-header {
             padding: 1rem 1.5rem;
             border-bottom: 1px solid #e5e7eb;
             dark:border-gray-700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .modal-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
+        .modal-body { flex: 1; overflow-y: auto; padding: 1.5rem; }
+        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- SKY EFFECTS --- */
+        #sky-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background: linear-gradient(to bottom, #bfdbfe 0%, #eff6ff 100%); /* Default Day Sky */
         }
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        
+        .dark #sky-container {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%); /* Dark Sky */
         }
+
+        #sky-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* Day Elements */
+        #sun {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(253,224,71,1) 0%, rgba(250,204,21,0.4) 60%, rgba(250,204,21,0) 100%);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .day-mode #sun { opacity: 1; }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: #fff;
+            border-radius: 200px;
+            opacity: 0.8;
+            filter: blur(5px);
+            z-index: 1;
+            animation: floatCloud linear infinite;
+        }
+        .cloud::after, .cloud::before {
+            content: ''; position: absolute; background: inherit;
+            width: 50%; height: 100%; top: -40%; left: 10%; border-radius: 50%;
+        }
+        .cloud::before { width: 40%; height: 120%; top: -50%; left: 45%; }
+        
+        @keyframes floatCloud {
+            from { transform: translateX(-200px); }
+            to { transform: translateX(110vw); }
+        }
+
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300">
+<body class="text-gray-800 dark:text-gray-100 transition-colors duration-300 relative">
 
-    <!-- Navbar (Sticky & Glass) -->
-    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-darkbg/90 shadow-lg glass-panel border-b border-gray-200 dark:border-gray-700">
+    <!-- SKY BACKGROUND CONTAINER -->
+    <div id="sky-container">
+        <div id="sun"></div>
+        <div id="cloud-layer"></div>
+        <canvas id="sky-canvas"></canvas>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 shadow-lg glass-panel border-b border-gray-200 dark:border-gray-700">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Name/Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
                         <i class="fa-solid fa-user-tie"></i>
@@ -185,17 +202,11 @@
                     <span id="navTitle" class="text-xl md:text-2xl font-bold text-primary-light dark:text-primary-dark tracking-wide"></span>
                 </div>
                 
-                <!-- Controls (Lang & Theme) -->
                 <div class="flex items-center gap-3">
-                    <!-- Desktop Nav (Hidden on Mobile) -->
                     <div class="hidden md:flex gap-1" id="desktopNav"></div>
-
-                    <!-- Theme Toggle -->
                     <button id="themeToggle" aria-label="Toggle theme" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-all duration-300 focus:outline-none shadow-sm">
                         <i class="fa-solid fa-moon text-gray-600 dark:text-yellow-300 text-lg transition-transform duration-500" id="themeIcon"></i>
                     </button>
-
-                    <!-- Language Toggle -->
                     <button id="langToggle" class="px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-white font-bold text-sm hover:opacity-90 shadow-md transition-transform active:scale-95">
                         <span id="langToggleText">EN</span>
                     </button>
@@ -204,71 +215,48 @@
         </div>
     </nav>
 
-    <!-- Main Container -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-            <!-- Left Column (Sticky Sidebar): Profile, Score, KPIs -->
+            <!-- Sidebar -->
             <div class="md:col-span-4 lg:col-span-3">
                 <div class="md:sticky md:top-24 space-y-6 animate-fade-in">
-                    
-                    <!-- Profile Card -->
-                    <section class="bg-white dark:bg-cardDark p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 text-center relative overflow-hidden">
-                        <!-- Decorative Top Gradient -->
+                    <section class="bg-white/80 dark:bg-cardDark/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 text-center relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
-                        
                         <div class="mb-4 inline-block p-1 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400">
                              <img src="assets/profile-DmCfdbWR.jpg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white dark:border-cardDark bg-white">
                         </div>
-
                         <h1 class="text-2xl font-extrabold mb-1" id="nameTitle"></h1>
                         <p class="text-sm font-semibold text-primary-light dark:text-primary-dark mb-4" id="jobTitle"></p>
-                        
                         <div class="text-gray-500 dark:text-gray-400 text-sm mb-6 flex justify-center items-center gap-2">
                             <i class="fa-solid fa-location-dot text-red-500"></i>
                             <span id="locationText"></span>
                         </div>
-
-                        <!-- Modern Social Icons Row -->
                         <div class="flex justify-center gap-4 mb-4">
-                            <a href="mailto:abdelshafiali@gmail.com" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300" title="Email">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                            <a href="https://wa.me/201095997846" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/abd-el-shafy-ali" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" title="LinkedIn">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
+                            <a href="mailto:abdelshafiali@gmail.com" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="https://wa.me/201095997846" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                            <a href="https://www.linkedin.com/in/abd-el-shafy-ali" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <p class="text-xs text-gray-400" id="phoneText"></p>
                     </section>
                     
-                    <!-- Readiness Chart -->
-                    <section class="bg-white dark:bg-cardDark p-5 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <section class="bg-white/80 dark:bg-cardDark/80 backdrop-blur-sm p-5 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700">
                         <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider text-center" id="readinessScoreTitle"></h3>
                         <div class="relative w-full h-40 mx-auto">
                             <canvas id="readinessChart"></canvas>
-                            <!-- Center Text Overlay -->
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <i class="fa-solid fa-rocket text-3xl text-gray-300 dark:text-gray-600 opacity-20"></i>
                             </div>
                         </div>
                     </section>
 
-                    <!-- KPI Cards (Stacked) -->
-                    <div id="kpisContainer" class="space-y-4">
-                        <!-- Populated by JS -->
-                    </div>
-
+                    <div id="kpisContainer" class="space-y-4"></div>
                 </div>
             </div>
 
-            <!-- Right Column (Content): Scrollable -->
+            <!-- Content -->
             <div class="md:col-span-8 lg:col-span-9 space-y-10 animate-fade-in animation-delay-200">
-                
-                <!-- Summary Section -->
-                <section id="profile-section" class="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg border-l-4 border-primary-light dark:border-primary-dark">
+                <section id="profile-section" class="bg-white/90 dark:bg-cardDark/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg border-l-4 border-primary-light dark:border-primary-dark">
                     <div class="flex items-center gap-3 mb-4">
                         <i class="fa-solid fa-user-circle text-3xl text-primary-light dark:text-primary-dark"></i>
                         <h2 class="text-2xl font-bold" id="profileHeading"></h2>
@@ -276,108 +264,70 @@
                     <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300" id="profileSummary"></p>
                 </section>
                 
-                <!-- Tech & Freelance Portfolio -->
                 <section id="tech-portfolio">
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
-                            <i class="fa-solid fa-laptop-code text-2xl"></i>
-                        </span>
+                        <span class="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"><i class="fa-solid fa-laptop-code text-2xl"></i></span>
                         <h2 class="text-3xl font-bold" id="techPortfolioTitle"></h2>
                     </div>
-
-                    <div class="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg relative overflow-hidden group">
-                        <!-- Hover Glow Effect -->
+                    <div class="bg-white/90 dark:bg-cardDark/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg relative overflow-hidden group">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
-
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b dark:border-gray-700 pb-4">
-                            <h3 class="text-xl font-bold flex items-center gap-2">
-                                <span id="freelanceTitleText"></span>
-                            </h3>
+                            <h3 class="text-xl font-bold flex items-center gap-2"><span id="freelanceTitleText"></span></h3>
                             <span class="text-sm px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-medium mt-2 md:mt-0" id="freelanceDuration"></span>
                         </div>
-                        
-                        <div class="space-y-6" id="freelanceContent">
-                            <!-- JS Content -->
-                        </div>
+                        <div class="space-y-6" id="freelanceContent"></div>
                     </div>
                 </section>
                 
-                <!-- Skills Matrix -->
                 <section id="skills">
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="p-3 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
-                            <i class="fa-solid fa-chart-pie text-2xl"></i>
-                        </span>
+                        <span class="p-3 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"><i class="fa-solid fa-chart-pie text-2xl"></i></span>
                         <h2 class="text-3xl font-bold" id="skillsTitle"></h2>
                     </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="skillsContainer">
-                        <!-- JS Content -->
-                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="skillsContainer"></div>
                 </section>
 
-                <!-- Experience & Education Grid -->
                 <section id="experience">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        
-                        <!-- Work Experience -->
-                        <div class="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg">
+                        <div class="bg-white/90 dark:bg-cardDark/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg">
                              <div class="flex items-center gap-3 mb-6 border-b dark:border-gray-700 pb-4">
                                 <i class="fa-solid fa-briefcase text-2xl text-primary-light dark:text-primary-dark"></i>
                                 <h3 class="text-2xl font-bold" id="workExperienceHeading"></h3>
                             </div>
-                            <div class="space-y-8 relative border-r-2 dark:border-gray-700 pr-6 mr-2 rtl:border-r-2 rtl:pr-6 rtl:mr-2 ltr:border-l-2 ltr:pl-6 ltr:ml-2 ltr:border-r-0 ltr:pr-0 ltr:mr-0" id="workExperienceTimeline">
-                                <!-- JS Content -->
-                            </div>
+                            <div class="space-y-8 relative" id="workExperienceTimeline"></div>
                         </div>
-
-                        <!-- Education -->
-                        <div class="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg">
+                        <div class="bg-white/90 dark:bg-cardDark/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg">
                             <div class="flex items-center gap-3 mb-6 border-b dark:border-gray-700 pb-4">
                                 <i class="fa-solid fa-graduation-cap text-2xl text-primary-light dark:text-primary-dark"></i>
                                 <h3 class="text-2xl font-bold" id="educationHeading"></h3>
                             </div>
-                            <div class="space-y-8 relative border-r-2 dark:border-gray-700 pr-6 mr-2 rtl:border-r-2 rtl:pr-6 rtl:mr-2 ltr:border-l-2 ltr:pl-6 ltr:ml-2 ltr:border-r-0 ltr:pr-0 ltr:mr-0" id="educationTimeline">
-                                <!-- JS Content -->
-                            </div>
+                            <div class="space-y-8 relative" id="educationTimeline"></div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Portfolio Section -->
                 <section id="portfolio">
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="p-3 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                            <i class="fa-solid fa-award text-2xl"></i>
-                        </span>
+                        <span class="p-3 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-award text-2xl"></i></span>
                         <h2 class="text-3xl font-bold" id="portfolioTitle"></h2>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioContent">
-                        <!-- JS will populate this -->
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioContent"></div>
                 </section>
 
-                <!-- Certifications -->
                 <section id="certs">
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="p-3 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
-                            <i class="fa-solid fa-certificate text-2xl"></i>
-                        </span>
+                        <span class="p-3 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400"><i class="fa-solid fa-certificate text-2xl"></i></span>
                         <h2 class="text-3xl font-bold" id="certsTitle"></h2>
                     </div>
-                    <div class="bg-white dark:bg-cardDark p-8 rounded-3xl shadow-lg">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="certsContent">
-                            <!-- JS Content -->
-                        </div>
+                    <div class="bg-white/90 dark:bg-cardDark/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="certsContent"></div>
                     </div>
                 </section>
-
             </div>
         </div>
-
     </main>
 
-    <footer class="bg-white dark:bg-cardDark border-t border-gray-200 dark:border-gray-800 mt-10">
+    <footer class="bg-white dark:bg-cardDark border-t border-gray-200 dark:border-gray-800 mt-10 relative z-10">
         <div class="container mx-auto px-4 py-8 text-center text-gray-500 dark:text-gray-400">
             <p id="footerText"></p>
         </div>
@@ -397,12 +347,8 @@
         </div>
     </div>
 
-    <!-- LOGIC -->
+    <!-- SCRIPT -->
     <script>
-        // --- 0. AI CONFIGURATION ---
-        const apiKey = ""; // Leave empty, system will handle authentication
-
-        // --- 1. CONFIGURATION & DATA ---
         const contentData = {
             ar: {
                 title: 'عبد الشافي علي | سيرة ذاتية ذكية',
@@ -460,6 +406,12 @@
                 ],
                 portfolioTitle: 'الشهادات',
                 portfolio: [
+                    { 
+                        img: 'assets/wells-fargo-forage.png', 
+                        title: 'محاكاة وظيفة مصرفي شخصي في Wells Fargo (Forage)', 
+                        description: 'شاركت في برنامج محاكاة تفاعلي يحاكي دور المصرفي الشخصي داخل فرع بنك، مما منحني خبرة عملية في التعامل مع العملاء وفهم احتياجاتهم. خلال البرنامج، تمكنت من: تحديد احتياجات العميل المالية وترشيح حلول بنكية مناسبة، تطوير مهارات التواصل والتعامل مع مواقف العملاء المختلفة، تطبيق مهارات حل المشكلات وتنظيم العمل داخل بيئة فرعية سريعة الإيقاع، وفهم دور المصرفي الشخصي وكيفية بناء علاقة قوية مع العملاء وتقديم دعم فعال.', 
+                        liked: false 
+                    },
                     { img: 'assets/Computerized Accounting.jpeg', title: 'محاسبة حاسوبية (Peach Tree)', description: 'أكملت الدورة بنجاح في جامعة قناة السويس بتقدير "ممتاز".', liked: false },
                     { img: 'assets/Emerging Talent for the Future Workplace.jpeg', title: 'برنامج تدريب المواهب الناشئة (CIB)', description: 'تم إكماله في البنك التجاري الدولي - مصر (CIB) ضمن برنامج تدريب المواهب الناشئة للمستقبل في مكان العمل (المرحلة الثانية).', liked: false },
                     { img: 'assets/Egyptian Banking System Model (EBSM).jpeg', title: 'نموذج النظام المصرفي المصري (EBSM)', description: 'شهادة برعاية بنك مصر، مع التركيز على الشمول المالي.', liked: false },
@@ -475,20 +427,8 @@
                 certsTitle: 'الشهادات والمحاكاة الوظيفية',
                 certs: {
                     sim: { t: 'محاكاة وظيفية (Forage)', i: ['JPMorgan Chase (الخدمات المصرفية الاستثمارية)', 'Fidelity Investments (محامي علاقات العملاء)', 'Koch Industries (المحاسبة)'] },
-                    bank: { t: 'تدريب بنكي وشهادات', i: [
-                        'تدريب صيفي في بنك مصر',
-                        'المهارات الشخصية المتمحورة حول الإنسان - CIB',
-                        'محو الأمية المالية ومهارات ريادة الأعمال - CIB',
-                        'التحول الرقمي ومحو أمية البيانات - CIB',
-                        'حضور: جلسة الشمول المالي والعمليات المصرفية - بنك مصر'
-                    ] },
-                    tech: { t: 'تقنية ومحاسبة', i: [
-                        'HTML and CSS',
-                        'Advanced Excel - Edraak',
-                        'أساسيات التسعير - Udemy',
-                        'المحاسبة المحوسبة (Peachtree) - جامعة قناة السويس',
-                        'ICDL'
-                    ] }
+                    bank: { t: 'تدريب بنكي وشهادات', i: [ 'تدريب صيفي في بنك مصر', 'المهارات الشخصية المتمحورة حول الإنسان - CIB', 'محو الأمية المالية ومهارات ريادة الأعمال - CIB', 'التحول الرقمي ومحو أمية البيانات - CIB', 'حضور: جلسة الشمول المالي والعمليات المصرفية - بنك مصر' ] },
+                    tech: { t: 'تقنية ومحاسبة', i: [ 'HTML and CSS', 'Advanced Excel - Edraak', 'أساسيات التسعير - Udemy', 'المحاسبة المحوسبة (Peachtree) - جامعة قناة السويس', 'ICDL' ] }
                 },
                 footer: '© 2025 | تم التطوير بواسطة عبد الشافي علي'
             },
@@ -548,6 +488,12 @@
                 ],
                 portfolioTitle: 'Certificates',
                 portfolio: [
+                    { 
+                        img: 'assets/wells-fargo-forage.png', 
+                        title: 'Wells Fargo Personal Banker Job Simulation (Forage)', 
+                        description: 'Completed a hands-on virtual simulation focused on branch banking operations and customer service. Through this program, I practiced identifying customer financial needs and recommending tailored banking solutions, strengthened communication skills through realistic customer conversations, applied problem-solving strategies to manage workflow in a fast-paced branch environment, and gained practical insight into the Personal Banker role and how to support customer relationships effectively.', 
+                        liked: false 
+                    },
                     { img: 'assets/Computerized Accounting.jpeg', title: 'Computerized Accounting (Peach Tree)', description: 'Successfully completed the course at Suez Canal University with an "Excellent" grade.', liked: false },
                     { img: 'assets/Emerging Talent for the Future Workplace.jpeg', title: 'Emerging Talent Program (CIB)', description: "'Emerging Talent for the Future Workplace' Summer Training Program (Phase 2): Completed at Commercial International Bank - Egypt (CIB).", liked: false },
                     { img: 'assets/Egyptian Banking System Model (EBSM).jpeg', title: 'Egyptian Banking System Model (EBSM)', description: 'Sponsored by Banque Misr, with a focus on financial inclusion.', liked: false },
@@ -563,55 +509,36 @@
                 certsTitle: 'Certifications & Job Simulations',
                 certs: {
                     sim: { t: 'Job Simulations (Forage)', i: ['JPMorgan Chase Investment Banking', 'Fidelity Investments Customer Relationship Advocate', 'Koch Industries Accounting'] },
-                    bank: { t: 'Banking Training & Certs', i: [
-                        'Summer Internship at Banque Misr',
-                        'Human-Centric Interpersonal Skills - CIB Egypt',
-                        'Financial Literacy & Entrepreneurial Skills - CIB Egypt',
-                        'Digital Transformation and Data Literacy - CIB Egypt',
-                        'Attendance: Financial Inclusion Session & Banking Operations - Bank Misr'
-                    ]},
-                    tech: { t: 'Technical & Accounting', i: [
-                        'HTML and CSS',
-                        'Advanced Excel - Edraak',
-                        'Basics of Pricing - Udemy',
-                        'Computerized Accounting (Peachtree) - Suez Canal University',
-                        'ICDL'
-                    ] }
+                    bank: { t: 'Banking Training & Certs', i: [ 'Summer Internship at Banque Misr', 'Human-Centric Interpersonal Skills - CIB Egypt', 'Financial Literacy & Entrepreneurial Skills - CIB Egypt', 'Digital Transformation and Data Literacy - CIB Egypt', 'Attendance: Financial Inclusion Session & Banking Operations - Bank Misr' ]},
+                    tech: { t: 'Technical & Accounting', i: [ 'HTML and CSS', 'Advanced Excel - Edraak', 'Basics of Pricing - Udemy', 'Computerized Accounting (Peachtree) - Suez Canal University', 'ICDL' ] }
                 },
                 footer: '© 2025 | Developed by Abd El-Shafi Ali'
             }
         };
 
-        // --- 2. STATE MANAGEMENT ---
-        let currentLang = 'ar'; // Default, will be overwritten by auto-detect
+        let currentLang = 'ar'; 
         let chartInstance = null;
 
-        // --- 3. AUTO-DETECTION LOGIC ---
         function detectSettings() {
-            // A. Language Detection
             const userLang = navigator.language || navigator.userLanguage; 
-            if (userLang.startsWith('ar')) {
-                currentLang = 'ar';
-            } else {
-                currentLang = 'en';
-            }
+            currentLang = userLang.startsWith('ar') ? 'ar' : 'en';
 
-            // B. Theme Detection
-            // Check if user has saved preference, otherwise use system
             const savedTheme = localStorage.getItem('theme');
             const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
             if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
                 document.documentElement.classList.add('dark');
+                document.body.classList.remove('day-mode');
             } else {
                 document.documentElement.classList.remove('dark');
+                document.body.classList.add('day-mode');
             }
             
             updateIcon();
             updateUI();
+            updateSkyEffects();
         }
 
-        // --- 4. RENDER FUNCTIONS ---
         function renderUI() {
             const data = contentData[currentLang];
             const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
@@ -619,31 +546,28 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = dir;
 
-            // Simple Text Replacements
-            document.getElementById('pageTitle').innerText = data.title;
-            document.getElementById('navTitle').innerText = data.navTitle;
-            document.getElementById('langToggleText').innerText = currentLang === 'ar' ? 'EN' : 'عربي';
-            document.getElementById('nameTitle').innerText = data.nameTitle;
-            document.getElementById('jobTitle').innerText = data.jobTitle;
-            document.getElementById('locationText').innerText = data.location;
-            document.getElementById('phoneText').innerText = data.phoneText;
-            document.getElementById('readinessScoreTitle').innerText = data.readinessTitle;
-            
-            document.getElementById('profileHeading').innerText = data.profileHeading;
-            document.getElementById('profileSummary').innerText = data.profileSummary;
-            
-            document.getElementById('techPortfolioTitle').innerText = data.techTitle;
-            document.getElementById('freelanceTitleText').innerText = data.freelanceTitle;
-            document.getElementById('freelanceDuration').innerText = data.freelanceDur;
-            
-            document.getElementById('skillsTitle').innerText = data.skillsTitle;
-            document.getElementById('workExperienceHeading').innerText = data.expTitle;
-            document.getElementById('educationHeading').innerText = data.eduTitle;
-            document.getElementById('portfolioTitle').innerText = data.portfolioTitle;
-            document.getElementById('certsTitle').innerText = data.certsTitle;
-            document.getElementById('footerText').innerText = data.footer;
+            const setText = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
 
-            // Nav Links
+            setText('pageTitle', data.title);
+            setText('navTitle', data.navTitle);
+            setText('langToggleText', currentLang === 'ar' ? 'EN' : 'عربي');
+            setText('nameTitle', data.nameTitle);
+            setText('jobTitle', data.jobTitle);
+            setText('locationText', data.location);
+            setText('phoneText', data.phoneText);
+            setText('readinessScoreTitle', data.readinessTitle);
+            setText('profileHeading', data.profileHeading);
+            setText('profileSummary', data.profileSummary);
+            setText('techPortfolioTitle', data.techTitle);
+            setText('freelanceTitleText', data.freelanceTitle);
+            setText('freelanceDuration', data.freelanceDur);
+            setText('skillsTitle', data.skillsTitle);
+            setText('workExperienceHeading', data.expTitle);
+            setText('educationHeading', data.eduTitle);
+            setText('portfolioTitle', data.portfolioTitle);
+            setText('certsTitle', data.certsTitle);
+            setText('footerText', data.footer);
+
             const navContainer = document.getElementById('desktopNav');
             navContainer.innerHTML = `
                 <a href="#profile-section" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.profile}</a>
@@ -653,9 +577,8 @@
                 <a href="#certs" class="px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">${data.nav.certs}</a>
             `;
 
-            // KPIs
             document.getElementById('kpisContainer').innerHTML = data.kpis.map(k => `
-                <div class="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-cardDark shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white/80 dark:bg-cardDark/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 rounded-xl ${k.bg} flex items-center justify-center ${k.color}">
                         <i class="fa-solid ${k.icon} text-xl"></i>
                     </div>
@@ -666,7 +589,6 @@
                 </div>
             `).join('');
 
-            // Tech Content
             document.getElementById('freelanceContent').innerHTML = data.freelanceSections.map(s => `
                 <div>
                     <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
@@ -678,12 +600,11 @@
                 </div>
             `).join('');
 
-            // Skills
             const skillsContainer = document.getElementById('skillsContainer');
-            skillsContainer.innerHTML = ''; // Clear existing content
+            skillsContainer.innerHTML = ''; 
             
             const renderSkillCol = (title, list) => `
-                <div class="bg-white dark:bg-cardDark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <div class="bg-white/80 dark:bg-cardDark/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="font-bold text-lg mb-4 text-primary-light dark:text-primary-dark">${title}</h3>
                     <div class="space-y-4">
                         ${list.map(s => `
@@ -704,47 +625,34 @@
             for (const catKey in data.skillCats) {
                 const catTitle = data.skillCats[catKey];
                 const catSkills = data.skills.filter(s => s.c === catKey);
-                if (catSkills.length > 0) {
-                    skillsContainer.innerHTML += renderSkillCol(catTitle, catSkills);
-                }
+                if (catSkills.length > 0) skillsContainer.innerHTML += renderSkillCol(catTitle, catSkills);
             }
             
             setTimeout(animateProgressBars, 500);
 
-            // Experience Timeline
             const tlClass = currentLang === 'ar' ? 'border-r-2 pr-6 mr-2' : 'border-l-2 pl-6 ml-2';
             const dotClass = currentLang === 'ar' ? '-right-[9px]' : '-left-[9px]';
             
-            document.getElementById('workExperienceTimeline').innerHTML = data.exp.map(e => `
+            const renderTimeline = (items, isEdu) => items.map(e => `
                 <div class="relative pb-8 last:pb-0">
-                    <div class="absolute top-1 ${dotClass} w-4 h-4 rounded-full bg-primary-light dark:bg-primary-dark border-4 border-white dark:border-cardDark shadow-sm"></div>
-                    <span class="text-xs font-bold text-primary-light dark:text-primary-dark bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md mb-2 inline-block">${e.d}</span>
+                    <div class="absolute top-1 ${dotClass} w-4 h-4 rounded-full ${isEdu ? 'bg-green-500' : 'bg-primary-light dark:bg-primary-dark'} border-4 border-white dark:border-cardDark shadow-sm"></div>
+                    <span class="text-xs font-bold ${isEdu ? 'text-green-600 bg-green-50 dark:bg-green-900/20' : 'text-primary-light dark:text-primary-dark bg-blue-50 dark:bg-blue-900/20'} px-2 py-1 rounded-md mb-2 inline-block">${e.d}</span>
                     <h4 class="text-lg font-bold dark:text-white">${e.t}</h4>
                     <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">${e.c}</p>
                     <p class="text-sm text-gray-600 dark:text-gray-300">${e.desc}</p>
                 </div>
             `).join('');
             
-            // Adjust timeline border dynamically
+            document.getElementById('workExperienceTimeline').innerHTML = renderTimeline(data.exp, false);
+            document.getElementById('educationTimeline').innerHTML = renderTimeline(data.edu, true);
             document.getElementById('workExperienceTimeline').className = `space-y-8 relative dark:border-gray-700 ${tlClass}`;
             document.getElementById('educationTimeline').className = `space-y-8 relative dark:border-gray-700 ${tlClass}`;
 
-             document.getElementById('educationTimeline').innerHTML = data.edu.map(e => `
-                <div class="relative pb-0">
-                    <div class="absolute top-1 ${dotClass} w-4 h-4 rounded-full bg-green-500 border-4 border-white dark:border-cardDark shadow-sm"></div>
-                    <span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-md mb-2 inline-block">${e.d}</span>
-                    <h4 class="text-lg font-bold dark:text-white">${e.t}</h4>
-                    <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">${e.c}</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">${e.desc}</p>
-                </div>
-            `).join('');
-
-            // Portfolio
             const portfolioContent = document.getElementById('portfolioContent');
-            portfolioContent.innerHTML = ''; // Clear previous content
+            portfolioContent.innerHTML = '';
             data.portfolio.forEach((p, index) => {
                 const item = document.createElement('button');
-                item.className = 'portfolio-item block group';
+                item.className = 'portfolio-item block group bg-white dark:bg-cardDark';
                 item.onclick = () => openModal(index);
                 item.innerHTML = `
                     <img src="${p.img}" alt="${p.title}" class="w-full h-48 object-cover">
@@ -755,7 +663,6 @@
                 portfolioContent.appendChild(item);
             });
 
-            // Certs
             const renderCertCat = (title, items, icon, color) => `
                 <div>
                     <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
@@ -766,13 +673,11 @@
                     </ul>
                 </div>
             `;
-
             document.getElementById('certsContent').innerHTML = 
                 renderCertCat(data.certs.sim.t, data.certs.sim.i, 'fa-laptop-file', 'text-purple-500') +
                 renderCertCat(data.certs.bank.t, data.certs.bank.i, 'fa-building-columns', 'text-blue-500') +
                 renderCertCat(data.certs.tech.t, data.certs.tech.i, 'fa-code', 'text-orange-500');
 
-            // Chart
             renderChart(data);
         }
 
@@ -782,7 +687,6 @@
             const labels = currentLang === 'ar' ? ['البرمجة', 'المالية', 'Soft Skills'] : ['Coding', 'Finance', 'Soft Skills'];
             
             if (chartInstance) chartInstance.destroy();
-
             Chart.defaults.color = isDark ? '#94a3b8' : '#64748b';
             Chart.defaults.font.family = 'Tajawal';
 
@@ -808,8 +712,7 @@
                             titleColor: isDark ? '#fff' : '#000',
                             bodyColor: isDark ? '#cbd5e1' : '#475569',
                             borderColor: isDark ? '#334155' : '#e2e8f0',
-                            borderWidth: 1,
-                            padding: 10
+                            borderWidth: 1, padding: 10
                         }
                     }
                 }
@@ -833,11 +736,8 @@
             }
         }
 
-        function updateUI() {
-            renderUI();
-        }
+        function updateUI() { renderUI(); }
 
-        // --- 5. EVENT LISTENERS ---
         document.getElementById('langToggle').addEventListener('click', () => {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             updateUI();
@@ -846,43 +746,216 @@
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                document.body.classList.remove('day-mode');
+            } else {
+                document.body.classList.add('day-mode');
+            }
+            
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateIcon();
-            updateUI(); // To update chart colors
+            updateUI();
+            updateSkyEffects();
         });
 
-        // --- MODAL LOGIC ---
+        // Modal
         const modal = document.getElementById('portfolioModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalClose = document.getElementById('modalClose');
-
         function openModal(index) {
             const data = contentData[currentLang].portfolio[index];
-            modalTitle.innerText = data.title;
-            modalImage.src = data.img;
-            modalDescription.innerText = data.description;
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalImage').src = data.img;
+            document.getElementById('modalDescription').innerText = data.description;
             modal.classList.add('open');
         }
+        function closeModal() { modal.classList.remove('open'); }
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-        function closeModal() {
-            modal.classList.remove('open');
+
+        // --- CREATIVE ATMOSPHERE LOGIC ---
+        
+        let animationFrameId;
+        const skyCanvas = document.getElementById('sky-canvas');
+        const ctx = skyCanvas.getContext('2d');
+        const cloudLayer = document.getElementById('cloud-layer');
+        
+        let stars = [];
+        let shootingStars = [];
+        let birds = [];
+
+        function initStars() {
+            skyCanvas.width = window.innerWidth;
+            skyCanvas.height = window.innerHeight;
+            stars = [];
+            for(let i=0; i<150; i++) {
+                stars.push({
+                    x: Math.random() * skyCanvas.width,
+                    y: Math.random() * skyCanvas.height,
+                    size: Math.random() * 2,
+                    opacity: Math.random(),
+                    speed: Math.random() * 0.05
+                });
+            }
         }
 
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
+        function initBirds() {
+            skyCanvas.width = window.innerWidth;
+            skyCanvas.height = window.innerHeight;
+            birds = [];
+            // Create a flock
+            for(let i=0; i<8; i++) {
+                birds.push({
+                    x: Math.random() * -200, // Start off screen
+                    y: Math.random() * (skyCanvas.height / 3),
+                    speed: Math.random() * 1 + 1.5,
+                    wingSpan: Math.random() * 10 + 10,
+                    flapSpeed: Math.random() * 0.1 + 0.1,
+                    angle: 0
+                });
             }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, skyCanvas.width, skyCanvas.height);
+            ctx.fillStyle = "white";
+            
+            stars.forEach(star => {
+                ctx.globalAlpha = star.opacity;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
+                ctx.fill();
+                star.opacity += (Math.random() - 0.5) * 0.1;
+                if(star.opacity < 0.2) star.opacity = 0.2;
+                if(star.opacity > 1) star.opacity = 1;
+            });
+
+            if(Math.random() < 0.02) {
+                shootingStars.push({
+                    x: Math.random() * skyCanvas.width,
+                    y: Math.random() * (skyCanvas.height/2),
+                    length: Math.random() * 80 + 20,
+                    speed: Math.random() * 10 + 5,
+                    angle: Math.PI / 4,
+                    opacity: 1
+                });
+            }
+
+            for(let i=0; i<shootingStars.length; i++) {
+                const s = shootingStars[i];
+                const tailX = s.x - s.length * Math.cos(s.angle);
+                const tailY = s.y - s.length * Math.sin(s.angle);
+
+                const gradient = ctx.createLinearGradient(s.x, s.y, tailX, tailY);
+                gradient.addColorStop(0, `rgba(255,255,255,${s.opacity})`);
+                gradient.addColorStop(1, `rgba(255,255,255,0)`);
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = gradient;
+                ctx.beginPath();
+                ctx.moveTo(s.x, s.y);
+                ctx.lineTo(tailX, tailY);
+                ctx.stroke();
+
+                s.x += s.speed * Math.cos(s.angle);
+                s.y += s.speed * Math.sin(s.angle);
+                s.opacity -= 0.02;
+
+                if(s.opacity <= 0 || s.x > skyCanvas.width || s.y > skyCanvas.height) {
+                    shootingStars.splice(i, 1);
+                    i--;
+                }
+            }
+            animationFrameId = requestAnimationFrame(drawStars);
+        }
+
+        function drawBirds() {
+            ctx.clearRect(0, 0, skyCanvas.width, skyCanvas.height);
+            ctx.strokeStyle = "rgba(0,0,0,0.5)"; // Dark semi-transparent birds
+            ctx.lineWidth = 2;
+
+            birds.forEach((bird, index) => {
+                bird.x += bird.speed;
+                bird.angle += bird.flapSpeed;
+                
+                // Bird V Shape Logic
+                const wingY = Math.sin(bird.angle) * 5;
+                
+                ctx.beginPath();
+                ctx.moveTo(bird.x, bird.y); // Body center
+                ctx.lineTo(bird.x - 10, bird.y - 5 + wingY); // Left wing
+                ctx.moveTo(bird.x, bird.y);
+                ctx.lineTo(bird.x - 10, bird.y - 5 - wingY); // Right wing (simplified drawing)
+                // Actually proper bird drawing (V shape)
+                // Left Wing
+                ctx.beginPath();
+                ctx.moveTo(bird.x, bird.y);
+                ctx.quadraticCurveTo(bird.x - 5, bird.y - wingY, bird.x - bird.wingSpan, bird.y + (wingY * 0.5));
+                ctx.stroke();
+                
+                // Right Wing
+                ctx.beginPath();
+                ctx.moveTo(bird.x, bird.y);
+                ctx.quadraticCurveTo(bird.x + 5, bird.y - wingY, bird.x + bird.wingSpan, bird.y + (wingY * 0.5));
+                ctx.stroke();
+
+                // Reset bird if it flies off screen
+                if(bird.x > skyCanvas.width + 50) {
+                    bird.x = -50;
+                    bird.y = Math.random() * (skyCanvas.height / 3);
+                }
+            });
+
+            animationFrameId = requestAnimationFrame(drawBirds);
+        }
+
+        function createClouds() {
+            cloudLayer.innerHTML = '';
+            const cloudCount = 5;
+            for(let i=0; i<cloudCount; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                const size = Math.random() * 120 + 100;
+                cloud.style.width = `${size}px`;
+                cloud.style.height = `${size/3}px`;
+                cloud.style.top = `${Math.random() * 30}%`;
+                // Parallax effect: slower clouds are further back
+                const duration = Math.random() * 30 + 40; 
+                cloud.style.animationDuration = `${duration}s`;
+                // Random start position
+                cloud.style.left = `${Math.random() * 100}%`;
+                cloud.style.opacity = Math.random() * 0.5 + 0.3;
+                cloudLayer.appendChild(cloud);
+            }
+        }
+
+        function updateSkyEffects() {
+            const isDark = document.documentElement.classList.contains('dark');
+            cancelAnimationFrame(animationFrameId);
+
+            if (isDark) {
+                // DARK MODE
+                cloudLayer.style.display = 'none';
+                skyCanvas.style.display = 'block';
+                initStars();
+                drawStars();
+            } else {
+                // LIGHT MODE
+                cloudLayer.style.display = 'block';
+                skyCanvas.style.display = 'block'; // Canvas needed for birds
+                createClouds();
+                initBirds();
+                drawBirds();
+            }
+        }
+
+        // Init
+        detectSettings();
+        window.addEventListener('resize', () => {
+            if(document.documentElement.classList.contains('dark')) initStars();
+            else initBirds();
         });
 
-        // Initialize
-        detectSettings();
-
     </script>
-
-        <!-- React placeholder removed -->
-
 </body>
 </html>
