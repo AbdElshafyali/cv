@@ -108,7 +108,7 @@
         }
         .modal-overlay.open { opacity: 1; pointer-events: all; }
         .modal-content {
-            background: white; dark:bg-cardDark;
+            background: white;
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             max-width: 800px; width: 90%; max-height: 90vh;
@@ -119,7 +119,6 @@
         .modal-header {
             padding: 1rem 1.5rem;
             border-bottom: 1px solid #e5e7eb;
-            dark:border-gray-700;
             display: flex; justify-content: space-between; align-items: center;
         }
         .modal-body { flex: 1; overflow-y: auto; padding: 1.5rem; }
@@ -233,9 +232,9 @@
                             <span id="locationText"></span>
                         </div>
                         <div class="flex justify-center gap-4 mb-4">
-                            <a href="mailto:abdelshafiali@gmail.com" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300"><i class="fa-solid fa-envelope"></i></a>
-                            <a href="https://wa.me/201095997846" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"><i class="fa-brands fa-whatsapp text-lg"></i></a>
-                            <a href="https://www.linkedin.com/in/abd-el-shafy-ali" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="mailto:abdelshafiali@gmail.com" aria-label="Email" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="https://wa.me/201095997846" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                            <a href="https://www.linkedin.com/in/abd-el-shafy-ali" aria-label="LinkedIn" class="icon-btn w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <p class="text-xs text-gray-400" id="phoneText"></p>
                     </section>
@@ -341,7 +340,7 @@
                 <button id="modalClose" class="modal-close text-gray-500 hover:text-gray-800 dark:hover:text-white">&times;</button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="Certificate" class="w-full h-auto rounded-lg mb-4">
+                <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Certificate" class="w-full h-auto rounded-lg mb-4">
                 <p id="modalDescription" class="text-gray-600 dark:text-gray-300"></p>
             </div>
         </div>
@@ -426,7 +425,7 @@
                 ],
                 certsTitle: 'الشهادات والمحاكاة الوظيفية',
                 certs: {
-                    sim: { t: 'محاكاة وظيفية (Forage)', i: ['JPMorgan Chase (الخدمات المصرفية الاستثمارية)', 'Fidelity Investments (محامي علاقات العملاء)', 'Koch Industries (المحاسبة)'] },
+                    sim: { t: 'محاكاة وظيفية (Forage)', i: ['JPMorgan Chase (الخدمات المصرفية الاستثمارية)', 'Fidelity Investments (محامي علاقات العملاء)', 'Koch Industries (المحاسبة)', 'Wells Fargo (مصرفي شخصي)'] },
                     bank: { t: 'تدريب بنكي وشهادات', i: [ 'تدريب صيفي في بنك مصر', 'المهارات الشخصية المتمحورة حول الإنسان - CIB', 'محو الأمية المالية ومهارات ريادة الأعمال - CIB', 'التحول الرقمي ومحو أمية البيانات - CIB', 'حضور: جلسة الشمول المالي والعمليات المصرفية - بنك مصر' ] },
                     tech: { t: 'تقنية ومحاسبة', i: [ 'HTML and CSS', 'Advanced Excel - Edraak', 'أساسيات التسعير - Udemy', 'المحاسبة المحوسبة (Peachtree) - جامعة قناة السويس', 'ICDL' ] }
                 },
@@ -508,7 +507,7 @@
                 ],
                 certsTitle: 'Certifications & Job Simulations',
                 certs: {
-                    sim: { t: 'Job Simulations (Forage)', i: ['JPMorgan Chase Investment Banking', 'Fidelity Investments Customer Relationship Advocate', 'Koch Industries Accounting'] },
+                    sim: { t: 'Job Simulations (Forage)', i: ['JPMorgan Chase Investment Banking', 'Fidelity Investments Customer Relationship Advocate', 'Koch Industries Accounting', 'Wells Fargo (Personal Banker)'] },
                     bank: { t: 'Banking Training & Certs', i: [ 'Summer Internship at Banque Misr', 'Human-Centric Interpersonal Skills - CIB Egypt', 'Financial Literacy & Entrepreneurial Skills - CIB Egypt', 'Digital Transformation and Data Literacy - CIB Egypt', 'Attendance: Financial Inclusion Session & Banking Operations - Bank Misr' ]},
                     tech: { t: 'Technical & Accounting', i: [ 'HTML and CSS', 'Advanced Excel - Edraak', 'Basics of Pricing - Udemy', 'Computerized Accounting (Peachtree) - Suez Canal University', 'ICDL' ] }
                 },
